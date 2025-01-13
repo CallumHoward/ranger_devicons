@@ -120,6 +120,7 @@ file_node_extensions = {
     'ico'      : color('', 185),
     'img'      : color('', 'white'),
     'ini'      : color('', 66),
+    'ipynb'    : color('', 179),
     'iso'      : color('', 'white'),
     'jar'      : color('', 167),
     'java'     : color('', 167),
@@ -128,6 +129,7 @@ file_node_extensions = {
     'jpg'      : color('', 140),
     'js'       : color('', 185),
     'json'     : color('', 185),
+    'jsonc'    : color('', 185),
     'jsx'      : color('', 67),
     'key'      : color('', 'white'),
     'ksh'      : color('', 59),
@@ -137,6 +139,7 @@ file_node_extensions = {
     'lhs'      : color('', 140),
     'log'      : color('', 'white'),
     'lua'      : color('', 74),
+    'lz'       : color('', 'white'),
     'lzh'      : color('', 'white'),
     'lzma'     : color('', 'white'),
     'm4a'      : color('', 'white'),
@@ -145,6 +148,7 @@ file_node_extensions = {
     'md'       : color('', 67),
     'mdx'      : color('', 67),
     'mjs'      : color('', 221),
+    'mka'      : color('', 'white'),
     'mkv'      : color('', 'white'),
     'ml'       : color('λ', 173),
     'mli'      : color('λ', 173),
@@ -337,6 +341,15 @@ dir_node_exact_matches = {
     '公共'                           : '',
     '模板'                             : '',
     '視頻'                             : '',
+# Swedish
+    'Skrivbord'                          : '',
+    'Dokument'                        : '',
+    'Hämtningar'                        : '',
+    'Musik'                            : '',
+    'Bilder'                         : '',
+    'Public'                           : '',
+    'Mallar'                        : '',
+    'Video'                           : '',
 }
 
 # Python 2.x-3.4 don't support unpacking syntex `{**dict}`
