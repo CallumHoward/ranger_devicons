@@ -73,6 +73,7 @@ file_node_extensions = {
     'db'       : color('', 188),
     'deb'      : color('', 'white'),
     'diff'     : color('', 59),
+    'dockerfile': color('', 59),
     'dll'      : color('', 'white'),
     'wps'      : color('', 25),
     'wpt'      : color('', 25),
@@ -131,6 +132,8 @@ file_node_extensions = {
     'jpeg'     : color('', 140),
     'jpg'      : color('', 140),
     'js'       : color('', 185),
+    'cjs'      : color('', 185),
+    'mjs'      : color('', 185),
     'json'     : color('', 185),
     'jsonc'    : color('', 185),
     'jsx'      : color('', 67),
@@ -261,21 +264,21 @@ file_node_extensions = {
 
 # Base mapping for English directory names
 dir_node_exact_matches_base = {
-    '.git'       : color('', 59),
-    'Desktop'    : '',
-    'Documents'  : '',
-    'Downloads'  : '',
-    'Dotfiles'   : '',
-    'Dropbox'    : color('', 27),
-    'Music'      : '',
-    'Pictures'   : '',
-    'Public'     : '',
-    'Templates'  : '',
-    'Videos'     : '',
-    'anaconda3'  : '',
-    'go'         : color('', 67),
-    'workspace'  : '',
-    'OneDrive'   : '',
+    '.git'        : color('', 59),
+    'Desktop'     : color('', 4),
+    'Documents'   : color('', 4),
+    'Downloads'   : color('', 4),
+    'Dotfiles'    : color('', 4),
+    'Dropbox'     : color('', 27),
+    'Music'       : color('', 4),
+    'Pictures'    : color('', 4),
+    'Public'      : color('', 4),
+    'Templates'   : color('', 4),
+    'Videos'      : color('', 4),
+    'anaconda3'   : color('', 4),
+    'go'          : color('', 67),
+    'workspace'   : color('', 4),
+    'OneDrive'    : color('', 4),
 }
 
 
@@ -367,6 +370,8 @@ file_node_exact_matches = {
     'docker-compose.yml'               : color('', 59),
     'dockerfile'                       : color('', 59),
     'Dockerfile'                       : color('', 59),
+    'Dockerfile.dev'                   : color('', 59),
+    'Dockerfile.prod'                  : color('', 59),
     'dropbox'                          : color('', 27),
     'favicon.ico'                      : color('', 185),
     'gemfile'                          : color('', 52),
@@ -389,9 +394,9 @@ file_node_exact_matches = {
     'Makefile.in'                      : color('', 66),
     'mimeapps.list'                    : color('', 66),
     'mix.lock'                         : color('', 140),
-    'node_modules'                     : color('', 161),
-    'package-lock.json'                : color('', 161),
-    'package.json'                     : color('', 161),
+    'node_modules'                     : color('', 124),
+    'package-lock.json'                : color('', 124),
+    'package.json'                     : color('', 124),
     'playlists'                        : color('', 'white'),
     'procfile'                         : color('', 140),
     'Rakefile'                         : color('', 52),
@@ -413,8 +418,14 @@ def devicon(file):
 
     if file.is_directory:
         dir_name = translate_dir_name(file.relative_path)
-        return dir_node_exact_matches.get(dir_name, color('', fg=66))
+        return dir_node_exact_matches.get(dir_name, color('', fg=4))
+    basename = os.path.basename(file.relative_path)
+    if basename.endswith(('.stories.ts', '.stories.tsx', '.stories.js', '.stories.jsx')):
+        return color('', 204)
+    if basename.endswith(('.test.ts', '.test.tsx', '.spec.ts', '.spec.tsx',
+                          '.test.js', '.test.jsx', '.spec.js', '.spec.jsx')):
+        return color('', 173)
     return file_node_exact_matches.get(
-        os.path.basename(file.relative_path),
-        file_node_extensions.get(file.extension, ''),
+        basename,
+        file_node_extensions.get(file.extension, color('', fg=7)),
     )
